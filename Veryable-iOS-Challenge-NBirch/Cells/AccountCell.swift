@@ -10,11 +10,11 @@ import UIKit
 // for formatting the custom cell layouts
 class AccountCell: UICollectionViewCell {
     
-    // data displayed
+    // data displayed in each cell
+    var accountImage = UIImageView()
     var accountName = UILabel()
     var desc = UILabel()
     var accountType = UILabel()
-    var accountImage = UIImageView()
     var arrowImageView = UIImageView()
     
     

@@ -51,12 +51,9 @@ class AccountDetailViewController: UIViewController {
     
     
     func setImage(accountType: String) -> UIImage {
-        if accountType == "bank" {
-            return UIImage(named: "bank")!
-        } else {
-            return UIImage(named: "card")!
-        }
+        return accountType == "bank" ? UIImage(named: "bank")! : UIImage(named: "card")!
     }
+    
     
     
     // ***** STYLING *****
@@ -115,7 +112,7 @@ class AccountDetailViewController: UIViewController {
     
     func setAccountNameConstraints() {
         accountName.translatesAutoresizingMaskIntoConstraints = false
-        accountName.topAnchor.constraint(equalTo: accountImageView.bottomAnchor, constant: 25).isActive = true
+        accountName.topAnchor.constraint(equalTo: accountImageView.bottomAnchor, constant: 20).isActive = true
         accountName.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         accountName.heightAnchor.constraint(equalToConstant: 20).isActive = true
         accountName.widthAnchor.constraint(equalToConstant: 300).isActive = true

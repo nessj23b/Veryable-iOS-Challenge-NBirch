@@ -20,12 +20,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let navController = UINavigationController(rootViewController: AccountListViewController())
         navController.navigationBar.prefersLargeTitles = false
+        navController.navigationBar.setTitleVerticalPositionAdjustment(15, for: UIBarMetrics.default)
+        let appearance = UINavigationBarAppearance()
+        appearance.backgroundColor = .white
+        appearance.titleTextAttributes = [.foregroundColor: VGrey.normal.color, .font: UIFont(name: "AvenirNext-Medium", size: 20)!]
+        navController.navigationBar.standardAppearance = appearance
+        navController.navigationBar.compactAppearance = appearance
+        navController.navigationBar.scrollEdgeAppearance = appearance
+        navController.additionalSafeAreaInsets.top = 20
+        navController.additionalSafeAreaInsets.bottom = 25
+        navController.navigationBar.tintColor = VGrey.dark.color
         
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = navController
         window?.makeKeyAndVisible()
     }
+    
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.

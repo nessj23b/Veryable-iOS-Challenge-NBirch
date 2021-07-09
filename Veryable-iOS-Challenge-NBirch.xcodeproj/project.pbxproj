@@ -20,6 +20,8 @@
 		2CFDD8F52698AA7D00FE5899 /* AccountDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDD8F42698AA7D00FE5899 /* AccountDetailViewController.swift */; };
 		2CFDD8F82698AAA000FE5899 /* AccountListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDD8F72698AAA000FE5899 /* AccountListViewController.swift */; };
 		2CFDD8FB2698AAC000FE5899 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDD8FA2698AAC000FE5899 /* Account.swift */; };
+		2CFDD9002698B5DF00FE5899 /* VryError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDD8FF2698B5DF00FE5899 /* VryError.swift */; };
+		2CFDD90B2698B94E00FE5899 /* UIViewController+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CFDD90A2698B94E00FE5899 /* UIViewController+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		2CFDD8F42698AA7D00FE5899 /* AccountDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountDetailViewController.swift; sourceTree = "<group>"; };
 		2CFDD8F72698AAA000FE5899 /* AccountListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountListViewController.swift; sourceTree = "<group>"; };
 		2CFDD8FA2698AAC000FE5899 /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		2CFDD8FF2698B5DF00FE5899 /* VryError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VryError.swift; sourceTree = "<group>"; };
+		2CFDD90A2698B94E00FE5899 /* UIViewController+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 		2CCFA32E2698A67800B3AD80 /* Veryable-iOS-Challenge-NBirch */ = {
 			isa = PBXGroup;
 			children = (
+				2CFDD9092698B92C00FE5899 /* Extensions */,
+				2CFDD8FE2698B5BD00FE5899 /* Utilities */,
 				2CCFA3462698A77B00B3AD80 /* Models */,
 				2CCFA3472698A78200B3AD80 /* ListView */,
 				2CCFA34D2698A85600B3AD80 /* DetailView */,
@@ -134,6 +140,22 @@
 				2CFDD8E22698A9C700FE5899 /* NetworkManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		2CFDD8FE2698B5BD00FE5899 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2CFDD8FF2698B5DF00FE5899 /* VryError.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		2CFDD9092698B92C00FE5899 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				2CFDD90A2698B94E00FE5899 /* UIViewController+Ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +228,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CFDD8F52698AA7D00FE5899 /* AccountDetailViewController.swift in Sources */,
+				2CFDD90B2698B94E00FE5899 /* UIViewController+Ext.swift in Sources */,
 				2CFDD8FB2698AAC000FE5899 /* Account.swift in Sources */,
 				2CFDD8E32698A9C700FE5899 /* NetworkManager.swift in Sources */,
 				2CFDD8E62698A9EA00FE5899 /* AccountCell.swift in Sources */,
@@ -213,6 +236,7 @@
 				2CCFA3302698A67800B3AD80 /* AppDelegate.swift in Sources */,
 				2CFDD8F22698AA5800FE5899 /* ViewColor.swift in Sources */,
 				2CFDD8EF2698AA4700FE5899 /* VryPallete.swift in Sources */,
+				2CFDD9002698B5DF00FE5899 /* VryError.swift in Sources */,
 				2CFDD8E92698AA2100FE5899 /* UIFont+Vry.swift in Sources */,
 				2CFDD8F82698AAA000FE5899 /* AccountListViewController.swift in Sources */,
 				2CCFA3322698A67800B3AD80 /* SceneDelegate.swift in Sources */,

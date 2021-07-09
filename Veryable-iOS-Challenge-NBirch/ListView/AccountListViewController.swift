@@ -34,14 +34,6 @@ class AccountListViewController: UIViewController, UICollectionViewDataSource, U
     // customizing nav bar
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let appearance = UINavigationBarAppearance()
-        appearance.backgroundColor = .white
-        appearance.titleTextAttributes = [.foregroundColor: VGrey.normal.color, .font: UIFont(name: "AvenirNext-Medium", size: 20)!]
-        navigationController?.navigationBar.standardAppearance = appearance
-        navigationController?.navigationBar.compactAppearance = appearance
-        navigationController?.navigationBar.scrollEdgeAppearance = appearance
-        navigationController?.additionalSafeAreaInsets.top = 10
-        navigationController?.navigationBar.tintColor = VGrey.dark.color
         navigationItem.backButtonTitle = ""
     }
     
@@ -49,7 +41,7 @@ class AccountListViewController: UIViewController, UICollectionViewDataSource, U
     // setup for collection view cell size and spacing
     func configureFlowLayout() {
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
-        layout.itemSize = CGSize(width: view.bounds.width-40, height: 100)
+        layout.itemSize = CGSize(width: view.bounds.width-40, height: 90)
         layout.minimumLineSpacing = 15;
     }
     
@@ -67,21 +59,26 @@ class AccountListViewController: UIViewController, UICollectionViewDataSource, U
     
     // fetching and loading data on success, handling errors on failiure
     func getAccounts() {
+        showLoadingView()
         NetworkManager.shared.getAccounts() { [weak self] (result) in
             // instead of making all self calls below optionals, we unwrap self here to ensure it has a value (makes for cleaner code)
             guard let self = self else { return }
+            self.dismissLoadingView()
             switch result {
-                // if we succeed in our network call...
-                case .success(let accounts):
-                    print("success")
-                    self.accounts = accounts
-                    DispatchQueue.main.async {
-                        self.collectionView.reloadData()
-                    }
-                // if we fail in our network call...
-                case .failure(let error):
-                    print("something went wrong")
-                    print(error)
+            // if we succeed in our network call...
+            case .success(let accounts):
+                print("success")
+                self.accounts = accounts
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            // if we fail in our network call...
+            case .failure(let error):
+                DispatchQueue.main.async {
+                    let alertController = UIAlertController(title: "Error", message: error.rawValue, preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: "OK", style: .default))
+                    self.present(alertController, animated: true, completion: nil)
+                }
             }
         }
     }
@@ -97,7 +94,7 @@ class AccountListViewController: UIViewController, UICollectionViewDataSource, U
         cell.layer.shadowColor = UIColor.lightGray.cgColor
         cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
         cell.layer.shadowRadius = 2.0
-        cell.layer.shadowOpacity = 1.0
+        cell.layer.shadowOpacity = 1.5
         cell.layer.masksToBounds = false
         cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
     }

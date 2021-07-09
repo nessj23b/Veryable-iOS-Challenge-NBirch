@@ -16,28 +16,28 @@ class NetworkManager {
     private init() {}
     
 
-    func getAccounts(completed: @escaping (Result<[Account], Error>) -> Void ) {
+    func getAccounts(completed: @escaping (Result<[Account], VryError>) -> Void ) {
         guard let url = URL(string: baseURL) else {
-            //completed(.failure(.invalidURL))
+            completed(.failure(.invalidURL))
             print("invalid url")
             return
         }
         
         let task = URLSession.shared.dataTask(with: URLRequest(url: url)) { data, response, error in
             if let _ = error {
-                //completed(.failure(.unableToComplete))
+                completed(.failure(.unableToComplete))
                 print("unable to complete")
                 return
             }
             
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
-                //completed(.failure(.invalidResponse))
+                completed(.failure(.invalidResponse))
                 print("invalid response")
                 return
             }
             
             guard let data = data else {
-                //completed(.failure(.invalidData))
+                completed(.failure(.invalidData))
                 print("invalid data")
                 return
             }
@@ -48,7 +48,7 @@ class NetworkManager {
                 let accounts = try decoder.decode([Account].self, from: data)
                 completed(.success(accounts))
             } catch {
-                //completed(.failure(.invalidData))
+                completed(.failure(.invalidData))
                 print("invalid data")
             }
         }
